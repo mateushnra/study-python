@@ -11,6 +11,8 @@ var = 2+3j #complex
 var = range(0,6,2) #range
 var = {"a", "b", "c"} #set 
 var = frozenset({"a", "b", "c"}) #frozenset
+var = lambda a : a + 10 #Function
+var = b"Texto" #bytes
 var = bytearray(5) #bytearray
 var = memoryview(bytes(5)) #memoryview
 var = None #NoneType
@@ -191,6 +193,15 @@ pow(2, 4) #Mesmo que 2 ** 4
 # Potência com 3 parametros
 pow(4, 3, 5) #Retorna o módulo da potência, ou seja, no caso seria (4 * 4 * 4) % 2 = 0
 
+# Arredondando
+round(3.2) #Arredonda para o inteiro mais próximo
+round(3.13918934, 2) #Ao utilizar o segundo parâmetro do round(), ele indica quantas casas após a virgula irão aparecer, assim sendo arredondado para o mais próximo, no caso do exemplo a saída é de 3.14
+round(3.50) #Quando o numero sendo arredondado estiver no meio exato, ambos os lados estarão igualmente próximos, portanto o arredondamento será definido para o lado par, se arredondar para cima é um numero par, então será para cima, caso contrário para baixo
+round(0.5) #0
+round(1.5) #2
+round(2.5) #2
+round(3.5) #4
+
 # Conversão de tipos entre variaveis
 a = str(3)
 a = int("3")
@@ -203,6 +214,116 @@ texto = "We are the so-called \\Vikings\\ from the north." #Exibe \Vikings\
 texto = "We are the so-called \nVikings\n from the north." #Quebra a linha entre os textos antes e depois do \n
 texto = "We are the so-called \tVikings\t from the north." #Exibe "We are the so-called    Vikings  from the north.", ou seja há um tab de distância onde havia \t
 texto = "We are the so-called \bVikings\b from the north." #Apaga o caracter anterior, ficando "We are the so-calledViking from the north."
+
+#If
+a = 1
+b = 2
+if a < b:
+   print(a)
+#Versão curta do if acima ^, como não existe else é possível resumir da seguinte forma:
+if a < b: print(a) 
+else: print(b)
+
+#If...Else
+a = 1
+b = 2
+if a > b:
+   print(a)
+else:
+   print(b)
+#Versão curta do if...Else acima ^, como não existe else é possível resumir da seguinte forma:
+if a > b: print(a) 
+else: print(b)
+#Versão mais curta ainda, ou conhecida como if ternário
+print(a) if a > b else print(b) #É possível exibir diferentes coisas em cada situação em um if ternário
+a = 3 if a > b else 5 #Ou apenas é possível tratar uma variável ou dado, no sentido em que, você define o que será atribuido, e o else é apenas o valor ou calculo que será atribuido caso não cumpra com a condição, portanto não tem como fazer com que por exemplo, b = 5, pois é a que está sendo tratado
+
+#If...Else if
+a = 1
+b = 2
+if a > b:
+   print(a)
+elif a < b:
+   print(b)
+
+#If...Else if...Else
+a = 1
+b = 2
+c = 3
+if a > b:
+   print(a)
+elif a < b:
+   print(b)
+else:
+   print(c)
+#Else if com Else ternário
+print("A") if a > b else print("=") if a == b else print("B")
+
+#While Loop
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+#Break
+i = 1
+while i < 6:
+  print(i)
+  break #Executa o que esta antes dele, mas caso seja executada essa linha o while é terminado
+  i += 1
+#Continue
+while i < 6:
+  print(i)
+  continue #Executa o que estiver antes, mas ao executar essa linha para na hora e volta para o início do loop
+  i += 1
+#Else no while
+while i < 6:
+  print(i)
+  i += 1
+else: #Funciona de forma que assim que o while terminar de ser executado, ou seja a condição não for ainda True, ele executa o código abaixo
+  print("Terminou")
+#Utilizando break, continue e else simultaneamente
+while i < 6:
+  print(i)#Executa
+  break#Encerra o while
+  i += 1
+  continue#Volta para o inicio do bloco
+  i += 2
+else: #Caso chegue no break dentro do bloco acima, o else não chega a ser executado, pois o laço foi interrompido e terminado
+  print("Terminou")
+
+# For Loop
+inicio = 0
+fim = 10
+for x in range(inicio, fim):# O range define o inicio do looping e após a vírgula o fim, ou seja range(0, 5) percorre, executa 5 vezes o looping, incrementando automaticamente o valor inicial, em que será percorrido da seguinte forma: 0, 1, 2, 3, 4. Ou seja, inicia no valor de inicio e termina no valor do fim - 1. E o valor será atual será passado para a variável declarada automaticamente antes do in
+   print(x)
+
+intervalo = 2
+for x in range(inicio, fim, intervalo):#Com 3 parâmetros o for irá percorrer do inicio ao fim, incrementando ou decrementando de acordo com o valor passado no intervalo, ou seja ficará: 0, 2, 4, 6, 8, 10
+   print(x)
+
+nome = "Mateus"
+for x in nome:#Podemos passar uma variavel no for em vez de um range(), desde que seja uma coleção de dados como lista, tupla, set e dicionário ou uma string
+   print(x)#Exibe letra por letra
+   
+for x in "Mateus":#Também é possível passar o valor direto
+   print(x)
+
+#Break no for
+for x in nome:
+   print(x)
+   break#Encerra o for sem percorre até o fim
+
+#Continue no for
+for x in nome:
+   print(x)
+   continue#volta para o inicio do for sem executar o que estiver abaixo, mas continua seguindo e executando normalmente
+   a = x + "a"
+
+#Else no for
+for x in nome:
+   print(x)
+else: 
+   print(nome)
 
 # Listas
 lista = [3, "apple", 3.14, 3, True] #Declarada com [], é heterogenea, possui tipos diferentes no mesmo conjunto, pode ser alterada, permite valores duplicados, possui indices iniciando em [0] e são ordenadas (na ordem em que insere os valores é como ficam)
@@ -268,6 +389,13 @@ while i < len(thislist): #funciona de forma parecida com o for i in range(len(th
 
 #Atalho para printar os valores de uma lista rapidamente
 [print(x) for x in thislist]
+
+#Descobrindo quantos do respectivo valor existe em uma lista
+thislist = [2,1,3,4,1]
+thislist.count(1) #Retorna 2, pois o valor 1 aparece duas vezes
+
+#Retornando o indice de um elemento
+thislist.index(1) #Retorna 1, pois o elemento 1 está na posição 1, sendo retornado apenas a primeira vez que o respectivo elemento aparece em caso de valores iguais
 
 #Ordenando um lista em ordem alfabética
 thislist = ["orange", "apple", "mango", "kiwi", "pineapple", "banana"]
@@ -372,3 +500,164 @@ print(thisset)
 #Com pop() remove um item aleátorio
 thisset = {"apple", "banana", "cherry"}
 thisset.pop()
+
+# Dicionarios
+dicionario = {"cor": "azul", "fruta": "banana", "numero": 33} #Declarada com {}, é heterogêneo, possui tipos diferentes no mesmo conjunto, pode ser alterada, NÃO permite valores duplicados, são ordenados
+
+#Instanciando um dicionario
+thisdict = dict(name = "Mateus", idade = "20")#O construtor é dict(), em que como parametros deve ser passado (key: value, key: value) para criar os valores
+
+#Acessando um dicionario
+thisdict.get("name") #método get(), onde é passado a chave como parâmetro para receber o valor
+thisdict["name"] #Assim como uma lista, usando as [] conseguimos indicar o indice e receber o valor
+#Acessando as chaves
+thisdict.keys() #Retorna as chaves do dicionário
+#Acessando os valores
+thisdict.values() #Retorna os valores apenas do dicionário
+#Acessando usando o items()
+thisdict.items() #Retorna uma lista com tuplas dentro, em que cada uma armazena dois valores (indice, valor), na ordem de cada item do dicionario
+
+#Checando a existência de uma chave
+"name" in thisdict #Retorna True, pois name é um indice presente no dicionario
+"Mateus" in thisdict #Retorna False, pois "Mateus" é um valor dentro do dicionario e não um indice, mesmo existindo
+
+#Alterando valores em um dicionario
+thisdict["name"] = "John" #Altera o valor da chave name para o valor passado
+thisdict.update({"name": "John"}) #Deve ser passado como parâmetro um dicionário, com a(s) chave(s) que deseja alterar, ou seja, da para mudar mais de um item simultaneamente
+
+#Adicionando itens novos a um dicionário
+thisdict["color"] = "blue" #Caso não haja o indice passado, ele será criado como um novo indice no final do dicionário, passando o valor depois do =
+thisdict.update({"color": "blue"}) #Mesma coisa com o update ao passar um novo indice não existente no dicionário, é criado um novo valor no final do dicionário de acordo com a ordem criada
+
+#Removendo itens de um dicionário
+thisdict.pop("color") #Remove o item passado indicado pela chave, além disso ele retorna o valor tirado simultaneamente enquanto tira um item
+thisdict.popitem() #Remove o último item do dicionário
+del thisdict["color"] #Deleta o item assim como na lista e em outras coleções de dados
+del thisdict #Deleta o dicionário
+thisdict.clear() #Limpa o dicionário, deixando-o vazio
+
+#Passando o dicionário por um looping 
+for x in thisdict:
+    print(x) #Printa os indices e não os valores
+
+for x in thisdict:
+    print(thisdict[x]) #Printa os valores baseado nos indices passados
+
+for x, y in thisdict:
+   print(x) #Printa os indices, mas não como são chamados, e sim o valor numérico, ou seja de 0 até tamanho - 1
+   print(y) #Printa os indices do jeito que são chamados
+
+for x in thisdict.values():
+   print(x) #Printa os valores de cada indice, pois o for percorrerá uma lista retornada pelo comando thisdict.values() que apenas possui os valores
+
+for x, y in thisdict.items():
+   print(x) #Printa o indice
+   print(y) #Printa o valor do indice   
+
+#Copiando um dicionário
+newdict = thisdict.copy() #Retorna o conteúdo inteiro do dicionário em vez de fazer a referencia a variavel thisdict
+newdict = dict(thisdict) #Instancia um novo dicionário passando como parametros o dicionário que será copiado, assim evitando a referencia
+
+#Aninhando dicionários
+thisdict = {
+   "dict1" : {
+      "name": "Mateus",
+      "idade": 20
+   },
+
+   "dict2" : {
+      "name": "John",
+      "idade": 20
+   }
+}
+#Criando separado e passando a variavel
+
+dict1 = {
+  "name": "Mateus",
+  "idade": 20
+}
+
+dict2 = {
+  "name": "John",
+  "idade": 20
+}
+
+thisdict = {
+   "dict1": dict1,
+   "dict2": dict2
+}
+
+#Acessando itens aninhado em um dicionário
+thisdict["dict1"]["name"] #Retorna "Mateus"
+
+#Funções em python
+
+def minhaFuncao():
+   print("Hello")
+
+minhaFuncao() #Chamando a função
+
+#Passando parâmetros
+def minhaFuncao(name):
+   print("Hello " + name)
+
+minhaFuncao("Mateus")
+
+#Definindo um valor padrão para um parâmetro
+def minhaFuncao(name = "John"):
+   print("Hello " + name)
+
+minhaFuncao("Mateus") #Retorna "Hello Mateus"
+minhaFuncao() #Retorna "Hello John"
+
+#Definindo um valor padrão para um parâmetro
+def minhaFuncao(nome, sobrenome):
+   print("Hello " + nome + " " + sobrenome)
+
+minhaFuncao("Mateus") #Da erro, pois passou-se apenas um valor para uma função que recebe 2 paraêmtros
+
+#É possível passar vários dados ao mesmo tempo como forma de tupla em uma função
+def minhaFuncao(*cores): #Só pode existir um parâmetro em uma função que recebe uma tupla dessa maneira
+   print(cores)
+
+minhaFuncao("azul", "vermelho", "roxo") #Os dados passados isoladamentes são armazenados na variável da função em forma de tupla
+
+#É possível passar um os dados em forma de dicionário
+def minhaFuncao(**cores):
+   print(cores)
+
+minhaFuncao(cor1 = "azul", cor2 = "vermelho", cor3 ="roxo") #Os dados passados isoladamentes são armazenados no dicionário, respectivamente chave e valor
+
+#É possível passar os argumentos de forma que a ordem não importe, basta indicar ao passar os valores quais parâmetros estarão recebendo o respectivo valor
+def minhaFuncao(cor1, cor2, cor3):
+   print(cor1)
+
+minhaLista(cor2 = "azul", cor3 = "vermelho", cor1 = "roxo")
+
+#Retornando valores em uma função
+def minhFuncao():
+   return 5 * 2 #Retorna um valor numérico
+
+minhaFuncao()
+
+#A função retorna valores de tipos diferente sem necessidade de identificar o tipo, pois é dinâmica
+def minhaFuncao():
+   return "Hello World!"
+
+minhaFuncao()
+
+#Lambda Function
+#A lambda funcion é uma versão rápida e simplificada de uma função, em que pode ter o tanto de parâmetros desejado e sempre retorna um valor
+x = lambda a, b: a + b + 10 #Deve-se armazenar uma lambda function em uma variável
+
+print(x(15, 5)) #Exibe o retorno da função lambda
+
+#Usando funções com lambda functions
+def minhaFuncao(n):
+   return lambda a: a * n #É possível retornar uma lambda function dentro de uma função, assim o parametro que será passado dentro da função será o valor recebido como parâmetro da lambda function, portanto não é possível usar diretamente minhaFuncao(), antes deve ser criado uma variavel só para armazenar uma função lambda
+
+duplicador = minhaFuncao(2) #duplicador irá ser uma variável do tipo function, que recebe a minhaFuncao() passando o valor 2 para o parâmetro da lambda function, portanto ao executar duplicador() será retornado o valor a partir da lambda
+triplicador = minhaFuncao(3) #Como minhaFuncao() é uma função que retorna uma lambda é possível criar várias variáveis que recebem a lambda function diferente, sem ter q reescrevela, apenas mudando os argumentos que ela terá
+
+print(duplicador(10))
+print(triplicador(10))
