@@ -1,0 +1,31 @@
+h1{
+    color: #F00;
+
+    
+}
+table{
+    border: 1px solid orange;
+    margin: 30px 0;
+}
+th{
+    background-color: orange;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+td{
+    color:orange;
+}
+a{
+    text-decoration: none;
+    color: black;
+    margin: 10px 30px;
+    cursor:pointer;
+
+}
+a:hover{
+    color:greenyellow;
+    background: blue;
+    padding: 5px;
+    border-radius: 25px;
+}
