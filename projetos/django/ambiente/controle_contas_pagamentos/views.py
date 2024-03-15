@@ -39,4 +39,13 @@ def upd_pagamento(request, pk):
             return HttpResponseRedirect(reverse('pagamento'))
     context = {'update': update, 'pk': pk, 'form': form}
     return render(request, 'controle_contas_pagamentos/upd_pagamento.html', context)
+
+def del_pagamento(request, pk):
+    deletar = Pagamento.objects.get(id=pk)
+    if(request.method == 'POST'):
+        deletar.delete()
+        return HttpResponseRedirect(reverse('pagamento'))
+    context = {'deletar': deletar, 'pk': pk}
+    return render(request, 'controle_contas_pagamentos/del_pagamento.html', context)
+
         

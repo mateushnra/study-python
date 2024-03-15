@@ -20,7 +20,10 @@
                 <td>{{pag.valor}}</td>
                 <td>{{pag.data}}</td>
                 <td>{{pag.tipo}}</td>
-                <td><a href="{% url 'upd_pagamento' pag.id %}" class="btn btn-success">Atualizar</a></td>
+                <td>
+                    <a href="{% url 'upd_pagamento' pag.id %}" class="btn btn-success">Atualizar</a>
+                    <a href="{% url 'del_pagamento' pag.id %}" class="btn btn-danger">Deletar</a>
+                </td>
             </tr>
             {%empty%}
             <tr>

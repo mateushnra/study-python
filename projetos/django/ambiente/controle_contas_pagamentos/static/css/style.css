@@ -21,11 +21,5 @@ a{
     color: black;
     margin: 10px 30px;
     cursor:pointer;
-
-}
-a:hover{
-    color:greenyellow;
-    background: blue;
     padding: 5px;
-    border-radius: 25px;
 }
